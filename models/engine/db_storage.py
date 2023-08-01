@@ -78,7 +78,7 @@ class DBStorage:
 
     def get(self, cls, id):
         """ A method to retrieve one object
-            Returns the object based on the class and its ID, 
+            Returns the object based on the class and its ID,
             or None if not found
         """
         clss = models.storage.all(cls)
