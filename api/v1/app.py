@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""API module"""
+"""AirBnB Clone API config file"""
 
 from flask import Flask, jsonify
 from models import storage
@@ -18,7 +18,13 @@ def teardown_app(exception):
 
     @app.errorhandler(404)
     def error_handler(code):
-        """Handles a 404 error"""
+        """ Handles a 404 error
+            Args:
+            error: [description]
+
+            Returns:
+            JSON: json object
+        """
         error = {
             "error": "Not found"
         }

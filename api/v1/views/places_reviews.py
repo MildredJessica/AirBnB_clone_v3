@@ -1,14 +1,29 @@
 #!usr/bin/python3
-"""View for Places objects that handles all default RESTFul API actions"""
+"""View for Places and Reviews objects that handles
+    all default RESTFul API actions"""
 
 from api.v1.views import app_views
 from models import storage
 from models.place import Place
+from models.review import Review
 from flask import jsonify, abort, make_response, request
 
 
-@app_views.route('/places', methods=['GET'])
-@app_views.route('/places/<place_id>', methods=['GET'])
+@app_views.route('/places/<place_id>/reviews', methods=['GET'])
+def all_cities_in_state(place_id):
+    """Retrieves the list of all reviews objects of a Place"""
+
+    place = storage.get(Place, place_id)
+    if place_id is None:
+        abort(404)
+    review_list = []
+    for review in place.review:
+        review_list.append(review.to_dict())
+
+    return jsonify(review_list)  
+
+
+@app_views.route('/eviews/<review_id>', methods=['GET'])
 def get_placey(place_id):
     """Retrieves  list of all places or a place object"""
     if place_id is None:
