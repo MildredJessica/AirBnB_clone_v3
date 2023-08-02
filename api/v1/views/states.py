@@ -1,5 +1,6 @@
 #!usr/bin/python3
 """View for State objects that handles all default RESTFul API actions"""
+
 from api.v1.views import app_views
 from models import storage
 from models.state import State
@@ -43,7 +44,7 @@ def delete_states(state_id=None):
 @app_views.route('/states', methods=['POST'], strict_slash=False)
 def post_states(state_id=None):
     """"Creates a state"""
-    if request.get_json:
+    if request.get_json():
         kwargs = request.get_json()
     else:
         return "Not a JSON", 400
@@ -59,9 +60,9 @@ def post_states(state_id=None):
 
 
 @app_views.route('/states', methods=['PUT'], strict_slash=False)
-def delete_states(state_id=None):
+def update_states(state_id=None):
     """"Updates a state object"""
-    if request.get_json:
+    if request.get_json():
         kwargs = request.get_json()
     else:
         return "Not a JSON", 400
