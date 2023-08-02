@@ -27,10 +27,6 @@ def get_states(state_id=None):
     state = storage.get('State', state_id)  # get state object
     if state is None:
         abort(404)
-<<<<<<< HEAD
-
-    return jsonify(state.to_json)
-=======
     return jsonify(state.to_json)
 
 
@@ -85,4 +81,3 @@ def update_states(state_id=None):
     except (Exception):
         return "Not a JSON", 400
     return jsonify(state.to_dict()), 200
->>>>>>> master
